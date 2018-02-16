@@ -5,14 +5,13 @@
 * 1.2. Chapter Two
 
 ### Checklist - TODO
-* git
-* Merge souborù
-* Export 
-* Èíslování nadpisù, èíslování
-* Reference (obsah: èísla stránek a seznam zdrojù)
-* multiple monitor
-
-### Checklist - already tested
-* obrázky
-* live preview
-* tabbed view / view multiple files simoutanesly 
+- [x] git
+- [x] obrÃ¡zky
+- [x] live preview
+- [x] tabbed view / view multiple files simoutanesly 
+- [ ]  Merge souborÅ¯
+- [ ] Export 
+- [ ]  ÄŒÃ­slovÃ¡nÃ­ nadpisÅ¯
+- [ ] diakritika
+- [ ]  Reference (obsah: ÄÃ­sla strÃ¡nek, seznam zdrojÅ¯)
+- [ ] multiple monitor
