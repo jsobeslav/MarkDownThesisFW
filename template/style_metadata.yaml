@@ -1,0 +1,25 @@
+---
+#latex style
+papersize: A4
+fontsize: 10pt
+
+geometry: margin=1cm
+margin-left: 1cm
+margin-right: 1cm
+margin-top: 1cm
+margin-bottom: 1cm
+indent: false
+
+fontfamily: lmodern
+test: test
+
+titlepage: true
+titlepage-color: "D8DE2C"
+lot: true
+lof: true
+toc: true
+biblatex: true
+
+# epub
+cover-image: 
+...

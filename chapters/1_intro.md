@@ -1,0 +1,18 @@
+## Checklist - TODO
+- [x] live preview
+- [x] tabbed view / view multiple files simoutanously
+- [x] multiple monitor support
+- [x] git
+- [x] diakritika (UTF8)
+- [x] Export - pandoc
+- [x] Merge více souborů
+- [x] šablona
+- [x] Table of contents
+- [x] Seznam tabulek, seznam obrázků
+- [ ] pagebreaks
+- [ ] Reference, citace (seznam zdrojů)
+- [ ] Číslováwní nadpisů
+- [x] obrázky
+- [x] tabulky
+- [ ] vlastní formátování / styl 
+- [ ] formalizovaný FW

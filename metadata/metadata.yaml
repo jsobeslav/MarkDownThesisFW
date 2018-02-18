@@ -1,0 +1,12 @@
+---
+title: MarkDown Thesis FrameWork
+subtitle: A test
+author: Jan Sobeslav
+institute: CZU
+date: February 2018
+keywords: [markdown, framework]
+abstract: |
+  Lorem Ipsum dolor sit amet
+lang: cs
+dir: ltr
+...
