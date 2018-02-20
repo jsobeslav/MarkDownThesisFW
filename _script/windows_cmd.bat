@@ -45,6 +45,7 @@ echo filenames are %CHAPTERS%
 :: Pass all the files to pandoc, alongside with additional parameters
 pandoc %METADATA% %CHAPTERS% --template=%TEMPLATE_LATEX% -o %OUTPUT% -s
 
+:: TODO: --filter pandoc-citeproc  (https://www.soimort.org/notes/161117/ ; http://pandoc.org/demo/example19/Extension-citations.html)
 
 :: REMOVE TEMPORARY FILES
 for /d %%G in ("./tex*") do rd /s /q "%%~G"

@@ -1,12 +1,24 @@
 ---
-title: MarkDown Thesis FrameWork
-subtitle: A test
+# title
+title: MarkDown Thesis FrameWork 
+subtitle: An example meta declaration
+# author
 author: Jan Sobeslav
-institute: CZU
+institute: Freelance developer / CULS / Adastra.one
+# publication
 date: February 2018
-keywords: [markdown, framework]
+
+# content summary
+keywords: [markdown, latex, ebook, document, thesis, framework, version control, pandoc]
 abstract: |
   Lorem Ipsum dolor sit amet
+  
+# language (ICU Locale or ISO 639 code) and text direction (ltr (left-to-right) or rtl (right-to-left))
 lang: cs
 dir: ltr
+
+# load the bibliography file
+bibliography: bibliography.bib
+
+# (add any other content-related variables you need for custom template)
 ...
