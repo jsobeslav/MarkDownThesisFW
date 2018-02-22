@@ -1,5 +1,5 @@
-## Functions example
-### Chapter One
+# Functions example
+## Chapter One
 Nulla ligula velit, nec ornare felis placerat sed. Morbi accumsan, ligula commodo varius viverra, lectus sem interdum sapien, eget hendrerit velit eros sit amet mi. Fusce convallis est pulvinar, sollicitudin sem eget, suscipit turpis. Vivamus euismod fringilla mauris, vel porta risus porta quis. Praesent ultrices auctor urna, ut scelerisque arcu euismod at. Vivamus odio elit, tempor quis pellentesque at, sodales non dolor. Suspendisse et lobortis urna. Vestibulum ullamcorper purus nibh, vitae dapibus nisl fermentum et.
 
 > Etiam sagittis ut nisl ut cursus. Fusce id dapibus lorem, in venenatis nibh. Mauris interdum congue dolor sit amet mollis. Morbi pellentesque tellus et libero pulvinar
@@ -17,7 +17,7 @@ Morbi nec turpis placerat, consectetur sapien nec, consectetur leo. Pellentesque
 
 Aenean congue risus ante, in malesuada elit sagittis et. Pellentesque ex ex, viverra quis nisl at, tempor venenatis mi. Aliquam erat volutpat. Nunc quis dictum lectus. Nam lacinia pellentesque elit.
 
-### Chapter Two
+## Chapter Two
 
 Lorem ipsum dolor sit amet, changed adipiscing elit. Vestibulum feugiat viverra ligula, non condimentum purus elementum egestas. Pellentesque ultrices, nisl id consequat ultricies, felis orci dictum metus, eget congue urna libero non dui. Vivamus non nisi eu turpis mollis tempus. Aliquam maximus ullamcorper ante sit amet accumsan. Nam consequat, eros nec feugiat scelerisque, lorem sapien vehicula nulla, in fermentum diam orci vitae nulla. Praesent at nisl ut nulla sagittis mollis. Etiam arcu elit, sagittis ac fringilla in, consequat in sapien. Fusce tincidunt dignissim facilisis. Follows page break.
 
@@ -34,7 +34,7 @@ Curabitur congue interdum ex a ornare. Some erat volutpat. In nec words orci, ac
 [^1]: A quick footnote example
 	Etiam luctus urna
 
-Aliquam erat volutpat. Fusce in thesis ultrices tortor, et ornare ligula pharetra a. Sed tristique diam et urna feugiat blandit. Cras arcu nulla, rhoncus sit amet aliquet nec, aliquam vitae risus. Etiam bibendum, ante quis hendrerit porttitor, orci elit tempor tortor, suscipit finibus mi `literal text`. Vestibulum et semper velit. Cras ligula sapien, sagittis id maximus ut, porta vitae orci. Duis ac leo libero.
+Aliquam erat volutpat. Fusce in thesis ultrices tortor, et ornare ligula pharetra a. Sed tristique diam et urna feugiat blandit. Cras arcu nulla, rhoncus sit amet aliquet nec, aliquam vitae risus. Etiam bibendum, ante quis hendrerit porttitor, orci elit tempor tortor, suscipit finibus mi `literal text`. Vestibulum et semper velit. Cras ligula sapien, sagittis id maximus ut, porta vitae orci. Duis ac leo libero.[@Mollinedo:2003ut]
 
 ```
 main() {

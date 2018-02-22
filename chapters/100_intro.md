@@ -1,5 +1,4 @@
-# MarkDownThesisFW
-## Overview and philoshophy
+# Overview and philoshophy
 As stated in the readme, this framework is a tool that utilizes [Pandoc](https://pandoc.org) to create beautiful standalone ebooks and documents from multiple [MarkDown](https://daringfireball.net/projects/markdown/) markup files. The text contents are written in plain text, and can therefore be tracked by version control system, like Git, and before exporting to pdf or epub, the MD code is translated to, and interpreted as [LaTeX](https://www.latex-project.org).
 
 The main reasons, why I decided to try this approach, instead of continuing to use any office document processing tool, were following:
@@ -8,7 +7,7 @@ The main reasons, why I decided to try this approach, instead of continuing to u
 - Version control: I thought it would be useful to see different versions of the document, and changes made between them. Moreover, remote VCS makes perfect backups, and even makes possible collaboration way easier
 - Clearer style: Since MD markup is quite limited, I like to think of it as of a benefit: I hope it will give the document more unified, more readable look
 
-### Features checklist
+## Features checklist
 There are certain features this framework in general, and other tools I use, must provide for me. Some features must be satisfied by recommended text processing program, other by the MD-to-PDF compilation tool. It's important to note, that theese points are my personal requirements, and I present them only to give an idea on the philosophy behind the project, and what could it give you.
 
 As noted further in the docs, the framework relies on [Pandoc](https://pandoc.org) tool, and I personally chosed [Haroopad](http://pad.haroopress.com/user.html) as text processor, which suits me the most.

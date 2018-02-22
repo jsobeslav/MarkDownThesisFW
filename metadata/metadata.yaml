@@ -1,24 +1,109 @@
 ---
-# title
+# REFERENCES
+## see [1] https://pandoc.org/MANUAL.html#variables-for-latex
+## see [2] https://en.wikibooks.org/wiki/LaTeX/Document_Structure
+
+
+
+# GENERAL INFO
+
+# title, subtitle, author, institute, date: self-explanatory
+## accepts: string
 title: MarkDown Thesis FrameWork 
 subtitle: An example meta declaration
-# author
 author: Jan Sobeslav
 institute: Freelance developer / CULS / Adastra.one
-# publication
 date: February 2018
 
-# content summary
+
+
+# CONTENT SUMMARY
+
+# keywords: most important words related to the document
+## accepts: array of strings
 keywords: [markdown, latex, ebook, document, thesis, framework, version control, pandoc]
+
+# abstract: a brief summary of the document
+## accepts: string
 abstract: |
   Lorem Ipsum dolor sit amet
   
-# language (ICU Locale or ISO 639 code) and text direction (ltr (left-to-right) or rtl (right-to-left))
+# thanks: specifies contents of acknowledgments footnote after document title
+## accepts: string
+thanks: |
+    Thanks to Pandoc and LaTeX creators
+
+
+
+# CONTENT LANGUAGE
+
+# lang: base text language
+## acceptsICU Locale or ISO 639 code
 lang: cs
+# dir: text direction
+## accepts: ltr (left-to-right) or rtl (right-to-left)
 dir: ltr
 
-# load the bibliography file
-bibliography: bibliography.bib
+
+
+# LISTS
+# table of content, lists pf figures and tables, and bibliography
+
+# toc: show table of contents
+## accepts: true or false
+toc: true
+
+# toc-depth: maximum level of headings included in table of contents
+## accepts: integer
+toc-depth: 3
+
+# toc-title: table of contents heading
+## accepts: string
+toc-title: Table of contents
+
+# secnumdepth: see [1]
+
+
+# lot: show list of tables
+## accepts: true or false 
+lot: true
+
+
+# lof: show list of figures
+## accepts: true or false 
+lof: true
+
+
+# biblatex: show bibliography 
+## accepts: true or false 
+biblatex: true
+
+# bibliography: load the BiBLaTeX file
+## accepts: filepath relative to the script (!)
+bibliography: ../metadata/bibliography.bib
+
+# biblio-title
+## accepts: string
+biblio-title: References
+
+# biblatexoptions: see [1]
+
+# natbiboptions: see [1]
+
+
+
+# OTHER ADDITIONS
+
+# <x>-includes: you might want to append some LaTeX lines to the template without rewriting it. Theese variables are outputed at certain parts of the template
+## accepts: LaTeX statements
+header-includes: |
+    \providecommand{\subtitle}[1]{%
+    \usepackage{titling}
+    \posttitle{%
+    \par\large#1\end{center}}
+    }
+before-includes: |
+after-includes: |
 
 # (add any other content-related variables you need for custom template)
 ...
