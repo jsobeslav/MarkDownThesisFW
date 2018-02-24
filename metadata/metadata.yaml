@@ -96,6 +96,8 @@ biblio-title: References
 
 # <x>-includes: you might want to append some LaTeX lines to the template without rewriting it. Theese variables are outputed at certain parts of the template
 ## accepts: LaTeX statements
+
+### append subtitle on the front page
 header-includes: |
     \providecommand{\subtitle}[1]{%
     \usepackage{titling}

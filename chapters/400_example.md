@@ -1,45 +1,76 @@
-# Functions example
-## Chapter One
-Nulla ligula velit, nec ornare felis placerat sed. Morbi accumsan, ligula commodo varius viverra, lectus sem interdum sapien, eget hendrerit velit eros sit amet mi. Fusce convallis est pulvinar, sollicitudin sem eget, suscipit turpis. Vivamus euismod fringilla mauris, vel porta risus porta quis. Praesent ultrices auctor urna, ut scelerisque arcu euismod at. Vivamus odio elit, tempor quis pellentesque at, sodales non dolor. Suspendisse et lobortis urna. Vestibulum ullamcorper purus nibh, vitae dapibus nisl fermentum et.
+Functions example
+=================
 
-> Etiam sagittis ut nisl ut cursus. Fusce id dapibus lorem, in venenatis nibh. Mauris interdum congue dolor sit amet mollis. Morbi pellentesque tellus et libero pulvinar
-> - Author
+For further reference, see [GitHub MarkDown guide](https://guides.github.com/features/mastering-markdown/).
 
-Sed sed scelerisque nibh. Etiam nec iaculis nisl, quis fringilla metus. Maecenas vel justo id lectus consequat scelerisque.  Follows section break.
+Chapter One, basics
+-------------------
 
-Morbi nec turpis placerat, consectetur sapien nec, consectetur leo. Pellentesque ac neque molestie, consectetur sapien quis, cursus erat. Nam elementum neque non nisi ullamcorper vulputate.
+### Headings and pagebreaks
+
+Note the two different heading styles used in this document. Both are valid according to original MD specification.
+
+---
+
+To create a horizontal line content separator, just write a line of three dashes (`-`), or asterisks (`*`). To force pagebreak, use LaTeX `\pagebreak` command.
+
+***
+
+### Text highlighting
+**This text is bold**. Nulla ligula velit, nec ornare felis placerat sed. Morbi accumsan, ligula commodo varius viverra, lectus sem interdum sapien, eget hendrerit velit eros sit amet mi. Fusce convallis est pulvinar, sollicitudin sem eget, suscipit turpis. Vivamus euismod fringilla mauris, vel porta risus porta quis. __This will also be bold__.
+
+*This text is italics*. Praesent ultrices auctor urna, ut scelerisque arcu euismod at. Vivamus odio elit, tempor quis pellentesque at, sodales non dolor. Suspendisse et lobortis urna. _This text is also italics_.
+
+***This text is both bold and italics*** Vestibulum ullamcorper purus nibh, vitae dapibus nisl fermentum et. ___So is this one___.
+
+You can use backticks to emphasize some text, that `ought to be absolutely literal` (mostly in code example comments). a orci bibendum aliquam sit amet nec ex. Nam orci sapien, porttitor a orci eu, hendrerit sodales sem. Quisque pellentesque accumsan nisl id tincidunt. Ut sit amet diam non arcu accumsan gravida non eget erat. Nam sit amet rutrum enim. Nulla mattis ex auctor augue condimentum pharetra. 
+
+~~This text is crossed out~~ et hendrerit magna. Maecenas vel elit at est sagittis mollis. In hac habitasse platea dictumst. Pellentesque in bibendum justo, sed aliquam sem. Vestibulum sollicitudin, tellus ac aliquam hendrerit, dolor tortor tempor eros, nec scelerisque quam mauris id ex.
 
 
-| Table | Example |
-|--------|--------|
-|Github  |Style   |
-|10      |45      |
 
-Aenean congue risus ante, in malesuada elit sagittis et. Pellentesque ex ex, viverra quis nisl at, tempor venenatis mi. Aliquam erat volutpat. Nunc quis dictum lectus. Nam lacinia pellentesque elit.
+### Lists
 
-## Chapter Two
+Morbi nec turpis placerat, consectetur sapien nec, consectetur leo. 
 
-Lorem ipsum dolor sit amet, changed adipiscing elit. Vestibulum feugiat viverra ligula, non condimentum purus elementum egestas. Pellentesque ultrices, nisl id consequat ultricies, felis orci dictum metus, eget congue urna libero non dui. Vivamus non nisi eu turpis mollis tempus. Aliquam maximus ullamcorper ante sit amet accumsan. Nam consequat, eros nec feugiat scelerisque, lorem sapien vehicula nulla, in fermentum diam orci vitae nulla. Praesent at nisl ut nulla sagittis mollis. Etiam arcu elit, sagittis ac fringilla in, consequat in sapien. Fusce tincidunt dignissim facilisis. Follows page break.
+This is ordered list example:
 
-Nulla lobortis sem non varius pretium. Etiam luctus urna eget lorem posuere, auctor gravida mauris imperdiet. Praesent in porta nibh, eu feugiat mi. Maecenas et risus risus. Nullam eleifend elit a massa semper facilisis. Maecenas ultrices nulla pellentesque sem malesuada, a vehicula purus dapibus.
+1. Sed id tempus turpis
+3. Ac sodales risus
+10. Pellentesque lobortis eu nibh eget accumsan
 
-Vivamus dolor nibh, consequat non nisl vitae, sagittis tincidunt erat. Maecenas convallis, risus vel cursus varius, diam tellus tristique ex, elementum mattis ante enim in ante. 
+It's important to note that the actual numbers you use to mark the list have no effect on the output Markdown produces. It's only about the number-dot sequence. It's also worth noting that it’s possible to trigger an ordered list by accident, for example when beginning a line with a date, in which case you may escape the first dot with a backslash (`\`):
 
-![A magnificent animal](../images/reindeer.jpg)
+12\.8. something.
 
-Donec euismod massa a magna blandit convallis. Ut vulputate risus augue, ut dictum diam feugiat non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
+Donec id justo et eros facilisis maximus. Mauris sed nisl sed ligula malesuada aliquam at sed sem. Praesent ultricies urna non facilisis egestas. Nunc egestas dolor dictum turpis tincidunt lacinia eu eu neque. Donec gravida feugiat velit, eu bibendum ipsum hendrerit porta. 
 
-Curabitur congue interdum ex a ornare. Some erat volutpat. In nec words orci, ac dapibus eros. Sed mauris mi, ullamcorper eget egestas eu, suscipit vel libero. In augue sapien, ultrices in congue vitae, commodo a purus. Donec ultrices ullamcorper mi at placerat. Morbi in gravida erat, nec laoreet leo. Aliquam semper ante vitae mi aliquam luctus. Vivamus dignissim sapien sapien, vel pellentesque nibh suscipit vel. Pellentesque enim turpis, tincidunt vel nisl nec, consequat molestie arcu. Donec porta risus risus, vestibulum vestibulum ipsum iaculis vel. Curabitur a dapibus nibh. Aliquam sed vehicula ante. Etiam pharetra tellus quis ex eleifend ultricies.[^1]
+There are three ways how to mark an unordered list:
 
-[^1]: A quick footnote example
-	Etiam luctus urna
+* Integer tristique risus nisi
+* Id tincidunt magna hendrerit nec
 
-Aliquam erat volutpat. Fusce in thesis ultrices tortor, et ornare ligula pharetra a. Sed tristique diam et urna feugiat blandit. Cras arcu nulla, rhoncus sit amet aliquet nec, aliquam vitae risus. Etiam bibendum, ante quis hendrerit porttitor, orci elit tempor tortor, suscipit finibus mi `literal text`. Vestibulum et semper velit. Cras ligula sapien, sagittis id maximus ut, porta vitae orci. Duis ac leo libero.[@Mollinedo:2003ut]
++  Fusce posuere molestie velit, in pulvinar nibh faucibus nec. 
 
-```
-main() {
-    printf("hello, world");
-}
-```
+- Pellentesque finibus placerat dapibus. 
+- Integer blandit urna justo
 
-Aliquam feugiat tempor vestibulum.
+Fusce rhoncus risus vel sem fringilla euismod. Vivamus eu leo rutrum, porta orci quis, sollicitudin lectus. Donec eget mollis elit. Fusce fringilla consequat sapien id cursus. Aenean volutpat, lacus vitae consectetur rutrum, libero enim suscipit tellus. 
+
+This is mixed and nested list example:
+
+1. Phasellus at mollis lectus
+	- Egestas fermentum elit
+	- Donec aliquam pretium ipsum vitae dignissim. 
+2. Fusce commodo ante in dolor commodo eleifend. 
+	1. Maecenas iaculis euismod risus
+	2. Hendrerit ultrices nisl porta sit amet.
+	3. Interdum et malesuada fames ac ante ipsum primis in faucibus. 
+		* Nam laoreet magna vel tincidunt porta. Phasellus scelerisque efficitur risus sit amet viverra.
+		Nulla ornare a arcu in varius. Fusce at gravida ex. Quisque at ullamcorper leo, a pulvinar nibh. Etiam orci magna, viverra eu mi in, ultricies facilisis metus. 
+        * Integer tristique risus nisi 
+3. Id tincidunt magna hendrerit nec. Fusce posuere molestie velit, in pulvinar nibh faucibus nec. Pellentesque finibus placerat dapibus. Integer
+
+Quisque luctus cursus mattis. Nunc nec ipsum convallis, vulputate felis quis, pharetra nisl. Phasellus at mollis lectus, egestas fermentum elit. Donec aliquam pretium ipsum vitae dignissim. Proin vel eleifend ante. Fusce commodo ante in dolor commodo eleifend. Maecenas iaculis.
+
+\pagebreak

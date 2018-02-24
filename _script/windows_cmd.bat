@@ -43,9 +43,9 @@ echo filenames are %CHAPTERS%
 
 :: COMPILE OUTPUT
 :: Pass all the files to pandoc, alongside with additional parameters
-pandoc %METADATA% %CHAPTERS% --filter pandoc-citeproc --template=%TEMPLATE_LATEX% -o %OUTPUT% -s 
+pandoc %METADATA% %CHAPTERS% --filter pandoc-citeproc --template=%TEMPLATE_LATEX% -o %OUTPUT% -s
 
 :: REMOVE TEMPORARY FILES
 for /d %%G in ("./tex*") do rd /s /q "%%~G"
-del _temp/*
+del /q ".\_temp\"*
 endlocal

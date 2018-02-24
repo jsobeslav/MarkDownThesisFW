@@ -35,10 +35,8 @@ Framework requirements and goals:
 	- Works like a charm, as seen in example chapter
 - [x] Content: tables
 	- It's difficult to maintain the tables in plain text, but it's possible, as seen in example chapter
-- [x] Organization: Table of contents, list of tables, list of figures
+- [x] Organization: Table of contents, list of tables, list of figures, bibliography (References)
 	- Another few of nice features Pandoc provides
-- [ ] Organization: Bibliography (References)
-	- Hasn't been tested yet, but there is Pandoc support for this, too
 - [ ] Organization: pagebreaks, heading numbering
 	- Hasn't been tested yet
 - [x] Style: Template support
@@ -47,3 +45,5 @@ Framework requirements and goals:
 	- Hasn't been tested properly
 - [ ] Formalized FW
 	- In the end, I want to present a publishable version of the project, with accurate docs and all features working and tested
+
+\pagebreak
