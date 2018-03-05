@@ -18,7 +18,8 @@ documentclass: report
 # classoption: general document options (see [2])
 ## accepts: e.g. oneside, twoside, twocolumn, titlepage, notitlepage (...)
 ## may be repetated multiple times
-classoption: titlepage
+classoption: oneside
+classoption: notitlepage
 
 # pagestyle: see [5]
 ## accepts: e.g. plain, empty, or heading
@@ -30,10 +31,10 @@ papersize: a4
 
 # margin-<direction>: distance of the content from edge of the paper
 ## accepts: <x>cm
-margin-left: 1cm
-margin-right: 1cm
-margin-top: 1cm
-margin-bottom: 1cm
+margin-left: 3.5cm
+margin-right: 2cm
+margin-top: 3cm
+margin-bottom: 3cm
 
 
 
@@ -87,6 +88,7 @@ linestretch: 1.25
 indent: false
 
 # subparagraph: see [1]
+subparagraph: yes
 
 
 
@@ -96,9 +98,26 @@ indent: false
 
 # csl: load the citation norm template
 ## accepts: filepath relative to the script (!)
-csl: ../template/citation_style.csl
+csl: ../templates/default/citation_style.csl
 
 
-    
+
+# OTHER ADDITIONS
+
+# <x>-includes: you might want to append some LaTeX lwines to the template without rewriting it. Theese variables are outputed at certain parts of the template
+## accepts: LaTeX statements
+
+### append subtitle on the front page
+header-includes: |
+    \providecommand{\subtitle}[1]{%
+    \usepackage{titling}
+    \posttitle{%
+    \par\large#1\end{center}}
+    }
+before-includes: |
+after-includes: |
+
+
+
 # (add any other style-related variables you need for custom template)
 ...

@@ -196,19 +196,19 @@ $if(section-titles)$
 \setbeamertemplate{part page}{
 \centering
 \begin{beamercolorbox}[sep=16pt,center]{part title}
-    \usebeamerfont{part title}\insertpart\par
+	\usebeamerfont{part title}\insertpart\par
 \end{beamercolorbox}
 }
 \setbeamertemplate{section page}{
 \centering
 \begin{beamercolorbox}[sep=12pt,center]{part title}
-    \usebeamerfont{section title}\insertsection\par
+	\usebeamerfont{section title}\insertsection\par
 \end{beamercolorbox}
 }
 \setbeamertemplate{subsection page}{
 \centering
 \begin{beamercolorbox}[sep=8pt,center]{part title}
-    \usebeamerfont{subsection title}\insertsubsection\par
+	\usebeamerfont{subsection title}\insertsubsection\par
 \end{beamercolorbox}
 }
 \AtBeginPart{
@@ -336,80 +336,69 @@ $if(logo)$
 $endif$
 $endif$
 
+\usepackage{titlesec}
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
+
 \begin{document}
-    $if(title)$
-    $if(beamer)$
-    \frame{\titlepage}
-    $else$
-    \maketitle
-    $endif$
-    $if(abstract)$
-    \begin{abstract}
-        $abstract$
-    \end{abstract}
-    $endif$
-    $endif$
 
-    $for(include-before)$
-    $include-before$
-    $endfor$
+	$for(include-before)$
+	$include-before$
+	$endfor$
 
-    $if(toc)$
-    $if(beamer)$
-    \begin{frame}
-        \tableofcontents[hideallsubsections]
-    \end{frame}
-    $else$
-    {
-    $if(colorlinks)$
-    \hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
-    $endif$
-    \setcounter{tocdepth}{$toc-depth$}
-    \tableofcontents
-    }
-    $endif$
-    $endif$
-    $if(lot)$
-    \listoftables
-    $endif$
-    $if(lof)$
-    \listoffigures
-    $endif$
-    $body$
+	$if(toc-title)$
+	\renewcommand\contentsname{$toc-title$}
+	$endif$
 
-    $if(natbib)$
-    $if(bibliography)$
-    $if(biblio-title)$
-    $if(book-class)$
-    \renewcommand\bibname{$biblio-title$}
-    $else$
-    \renewcommand\refname{$biblio-title$}
-    $endif$
-    $endif$
-    $if(beamer)$
-    \begin{frame}[allowframebreaks]{$biblio-title$}
-        \bibliographytrue
-        $endif$
-        \bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
-        $if(beamer)$
-    \end{frame}
-    $endif$
+	$if(colorlinks)$
+	\hypersetup{linkcolor=$if(toccolor)$$toccolor$$else$$endif$}
+	$endif$
+	\setcounter{tocdepth}{$toc-depth$}
 
-    $endif$
-    $endif$
-    $if(biblatex)$
-    $if(beamer)$
-    \begin{frame}[allowframebreaks]{$biblio-title$}
-        \bibliographytrue
-        \printbibliography[heading=none]
-    \end{frame}
-    $else$
-    \printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
-    $endif$
+	$if(lot-title)$
+	\renewcommand\listtablename{$lot-title$}
+	$endif$
 
-    $endif$
-    $for(include-after)$
-    $include-after$
+	$if(lof-title)$
+	\renewcommand\listfigurename{$lof-title$}
+	$endif$
 
-    $endfor$
+	$body$
+
+	$if(natbib)$
+	$if(bibliography)$
+	$if(biblio-title)$
+	$if(book-class)$
+	\renewcommand\bibname{$biblio-title$}
+	$else$
+	\renewcommand\refname{$biblio-title$}
+	$endif$
+	$endif$
+	$if(beamer)$
+	\begin{frame}[allowframebreaks]{$biblio-title$}
+		\bibliographytrue
+	$endif$
+
+		\bibliography{$for(bibliography)$$bibliography$$sep$,$endfor$}
+
+		$if(beamer)$
+	\end{frame}
+	$endif$
+
+	$endif$
+	$endif$
+	$if(biblatex)$
+	$if(beamer)$
+	\begin{frame}[allowframebreaks]{$biblio-title$}
+		\bibliographytrue
+		\printbibliography[heading=none]
+	\end{frame}
+	$else$
+	\printbibliography$if(biblio-title)$[title=$biblio-title$]$endif$
+	$endif$
+
+	$endif$
+	$for(include-after)$
+	$include-after$
+
+	$endfor$
 \end{document}

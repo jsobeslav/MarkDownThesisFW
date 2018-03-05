@@ -4,7 +4,6 @@
 ## see [2] https://en.wikibooks.org/wiki/LaTeX/Document_Structure
 
 
-
 # GENERAL INFO
 
 # title, subtitle, author, institute, date: self-explanatory
@@ -14,6 +13,8 @@ subtitle: An example meta declaration
 author: Jan Sobeslav
 institute: Freelance developer / CULS / Adastra.one
 date: February 2018
+
+logo: ../images/logo.jpg
 
 
 
@@ -26,20 +27,15 @@ keywords: [markdown, latex, ebook, document, thesis, framework, version control,
 # abstract: a brief summary of the document
 ## accepts: string
 abstract: |
-  Lorem Ipsum dolor sit amet
-  
-# thanks: specifies contents of acknowledgments footnote after document title
-## accepts: string
-thanks: |
-    Thanks to Pandoc and LaTeX creators
-
+    Lorem Ipsum dolor sit amet
 
 
 # CONTENT LANGUAGE
 
 # lang: base text language
-## acceptsICU Locale or ISO 639 code
-lang: cs
+## accepts: ICU Locale or ISO 639 code
+lang: en
+
 # dir: text direction
 ## accepts: ltr (left-to-right) or rtl (right-to-left)
 dir: ltr
@@ -68,10 +64,18 @@ toc-title: Table of contents
 ## accepts: true or false 
 lot: true
 
+# lot-title: Heading of the list of tables block
+## accepts: string
+lot-title: List of tables
+
 
 # lof: show list of figures
 ## accepts: true or false 
 lof: true
+
+# lof-title: Heading of the list of figures
+## accepts: string
+lof-title: List of figures
 
 
 # biblatex: show bibliography 
@@ -82,7 +86,7 @@ biblatex: true
 ## accepts: filepath relative to the script (!)
 bibliography: ../metadata/bibliography.bib
 
-# biblio-title
+# biblio-title: Heading of the blibliography block
 ## accepts: string
 biblio-title: References
 
@@ -97,15 +101,11 @@ biblio-title: References
 # <x>-includes: you might want to append some LaTeX lines to the template without rewriting it. Theese variables are outputed at certain parts of the template
 ## accepts: LaTeX statements
 
-### append subtitle on the front page
 header-includes: |
-    \providecommand{\subtitle}[1]{%
-    \usepackage{titling}
-    \posttitle{%
-    \par\large#1\end{center}}
-    }
 before-includes: |
 after-includes: |
+
+
 
 # (add any other content-related variables you need for custom template)
 ...
