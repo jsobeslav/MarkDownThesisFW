@@ -33,17 +33,17 @@ Framework requirements and goals:
 	- Pandoc does this, and much more
 - [x] Content: images, code preview
 	- Works like a charm, as seen in example chapter
-- [x] Content: tables
-	- It's difficult to maintain the tables in plain text, but it's possible, as seen in example chapter
+- [ ] Content: tables
+	- It's difficult to maintain the tables in plain text, but it's possible, as seen in example chapter. I intend to add CSV or XLS import function.
 - [x] Organization: Table of contents, list of tables, list of figures, bibliography (References)
-	- Another few of nice features Pandoc provides
+	- Another few of nice features Pandoc\LaTeX provides
 - [ ] Organization: pagebreaks, heading numbering
 	- Hasn't been tested yet
 - [x] Style: Template support
-	- It's not perfect enough in current version of the framework, as described in first News entry, but Pandoc does have the template support
+	- There are templates for both document and chapter
 - [ ] Custom formatting / style
-	- Hasn't been tested properly
+	- Templates are working, but they yet need some tweaking and cleaning. Once that had been done, it should be easier to add more formating options.
 - [ ] Formalized FW
 	- In the end, I want to present a publishable version of the project, with accurate docs and all features working and tested
-
-\pagebreak
+- [ ] Generalize the script
+	- I want to make it possible to use the script with multiple documents. Perheaps, some GUI, or file watchers may be usefull, too.

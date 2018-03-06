@@ -19,17 +19,26 @@ setlocal ENABLEDELAYEDEXPANSION
 set TEMP_FOLDER=_temp
 if not exist ./%TEMP_FOLDER% mkdir $TEMP_FOLDER%
 
+:: Make a file containing only a newline for precompilation process
+:: it is necessary to append a newline between chapter file and metadata block,
+::  so that it gets formatted properly
+set SPACE_FILE=./%TEMP_FOLDER%/space.md
+echo. > %SPACE_FILE%
+
+
 
 
 :: DECLARE FILE LOCATIONS
 :: Metadata files
-set METADATA=../metadata/metadata.yaml
+set METADATA=../metadata/metadata_content.yaml
+:: bibliography path is declared in the yaml file
 
-:: Template files
+:: Template and style files
+set METADATA=%METADATA% ../templates/%TEMPLATE%/metadata_style.yaml
+:: set STYLE=../templates/%TEMPLATE%/style_epub_css.css
+:: epub_style is not neeeded at the moment, and citation_style path is declared in the yaml file
 set TEMPLATE_DOCUMENT=../templates/%TEMPLATE%/template_document.tex
 set TEMPLATE_CHAPTER=../templates/%TEMPLATE%/template_chapter.tex
-set METADATA=%METADATA% ../templates/%TEMPLATE%/style_metadata.yaml
-:: set STYLE=../templates/%TEMPLATE%/style_epub_css.css
 
 :: Set the output file location to the directory root, and its name after the root as well
 for %%* in (..) do set RESULT_FILENAME=%%~nx*
@@ -51,20 +60,20 @@ set CHAPTERS=
 for /f %%i in (%FILENAMES%) do (
 	set FILENAME=%%i
 	:: first alpha-precompile the metadata using the chapter as both source and template to replace variables within itself
-	pandoc %METADATA% ../chapters/!FILENAME! --template=../chapters/!FILENAME! -o ./%TEMP_FOLDER%/alpha_!FILENAME!
+	pandoc ../chapters/!FILENAME! %SPACE_FILE% %METADATA% --template=../chapters/!FILENAME! -o ./%TEMP_FOLDER%/alpha_!FILENAME!
 	:: then beta-precompile the alpha-precompiled file with template_chapter template to format it
-	pandoc %METADATA% ./%TEMP_FOLDER%/alpha_!FILENAME! --template=%TEMPLATE_CHAPTER% -o ./%TEMP_FOLDER%/!FILENAME!
-    set CHAPTERS=!CHAPTERS! ./%TEMP_FOLDER%/!FILENAME!
+	pandoc ./%TEMP_FOLDER%/alpha_!FILENAME! %SPACE_FILE% %METADATA% --template=%TEMPLATE_CHAPTER% -o ./%TEMP_FOLDER%/beta_!FILENAME!
+    set CHAPTERS=!CHAPTERS! ./%TEMP_FOLDER%/beta_!FILENAME!
 )
 
+
+
+:: COMPILE OUTPUT
 :: Output used filenames
 echo metadata files are %METADATA%
 echo chapter files are %CHAPTERS%
 echo template folder is set to %TEMPLATE%
 
-
-
-:: COMPILE OUTPUT
 :: Pass all the loaded files to pandoc, alongside with additional parameters
 pandoc %METADATA% %CHAPTERS% --filter pandoc-citeproc --template=%TEMPLATE_DOCUMENT% -o %OUTPUT% -s
 

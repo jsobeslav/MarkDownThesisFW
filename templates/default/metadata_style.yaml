@@ -6,7 +6,7 @@
 ## see [4] https://en.wikibooks.org/wiki/LaTeX/Colors
 ## see [5] https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
 
-
+text: init
 
 # DOCUMENT STYLE
 ## Global document visual settings; page dimensions, margins etc.
@@ -98,7 +98,7 @@ subparagraph: yes
 
 # csl: load the citation norm template
 ## accepts: filepath relative to the script (!)
-csl: ../templates/default/citation_style.csl
+csl: ../templates/default/citation_style_ieee.csl
 
 
 
