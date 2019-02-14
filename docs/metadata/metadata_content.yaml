@@ -84,7 +84,7 @@ lof-title: List of figures
 biblatex: true
 
 # bibliography: load the BiBLaTeX file
-## accepts: filepath relative to the script (!)
+## accepts: filepath relative to chapters subfolder (!)
 bibliography: ../metadata/bibliography.bib
 
 # biblio-title: Heading of the blibliography block

@@ -1,0 +1,18 @@
+{
+  "require" : {
+	"symfony/process" : "^4.1"
+  },
+  "require-dev" : {
+	"squizlabs/php_codesniffer" : "^3.3",
+	"phpmd/phpmd" : "^2.6",
+	"phpstan/phpstan" : "^0.10.4"
+  },
+  "autoload" : {
+	"files" : [
+	  "App/Helpers/functions.php"
+	],
+	"psr-4" : {
+	  "App\\" : "App/"
+	}
+  }
+}

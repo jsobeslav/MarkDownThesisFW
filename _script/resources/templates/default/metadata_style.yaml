@@ -15,11 +15,11 @@ text: init
 ## accepts: e.g. article, report, book, memoir, letter (...)
 documentclass: report
 
-# classoption: general document options (see [2])
+# documentoptions: general document options (see [2])
 ## accepts: e.g. oneside, twoside, twocolumn, titlepage, notitlepage (...)
 ## may be repetated multiple times
-classoption: oneside
-classoption: notitlepage
+documentoptions: oneside
+documentoptions: notitlepage
 
 # pagestyle: see [5]
 ## accepts: e.g. plain, empty, or heading
@@ -64,6 +64,10 @@ fontsize: 11pt
 
 # LINKS
 
+# colorlinks: turn on colouring the links
+## accepts: boolean
+colorlinks: true
+
 # <x>color: color of different types of links
 ## accepts: see [4]
 linkcolor: Blue
@@ -97,8 +101,8 @@ subparagraph: yes
 # biblio-style: see [1]
 
 # csl: load the citation norm template
-## accepts: filepath relative to the script (!)
-csl: ../templates/default/citation_style_ieee.csl
+## accepts: filepath relative to chapters subfolder (!)
+csl: ../../../templates/default/citation_style_ieee.csl
 
 
 

@@ -1,5 +1,13 @@
 ## News
 
+> As I returned to the project after a while, I realized that I need to rewrite it, in order to be able to continue with more complex features.
+>
+> Since I don't have strong knowledge of scripting languages like bash or Windows CMD, I decided to go on with the one language I am most familiar with, PHP.
+>
+> - v0.0.5.0, October 2018
+
+---
+
 > I made it possible to declare a variable within chapter file itself, which overwrites global declarations, and can be used in that very file (as can global variables be used, naturally). I will update the docs with next commit.
 > 
 > I need that functionality because of the new `template_chapter` file, a template that wrapps every chapter to get more control over the result formating. I want to use variables in this template as I do in `template_document`.
