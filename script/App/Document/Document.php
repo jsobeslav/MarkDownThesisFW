@@ -17,6 +17,8 @@ class Document
 	/** @var array $chapters */
 	public $chapters;
 
+	private $acceptedFilenames = ['md'];
+
 	/**
 	 * Document constructor.
 	 *
@@ -40,7 +42,7 @@ class Document
 	{
 		$chaptersDir = UriResolver::chaptersDirectory($this->directory);
 		foreach (scandir($chaptersDir) as $file) {
-			if (pathinfo($file, PATHINFO_EXTENSION) != 'md') {
+			if (!in_array(pathinfo($file, PATHINFO_EXTENSION), $this->acceptedFilenames)) {
 				continue;
 			};
 

@@ -1,0 +1,127 @@
+---
+# REFERENCES
+## see [1] https://pandoc.org/MANUAL.html#variables-for-latex
+## see [2] https://en.wikibooks.org/wiki/LaTeX/Document_Structure
+## see [3] http://www.tug.dk/FontCatalogue/
+## see [4] https://en.wikibooks.org/wiki/LaTeX/Colors
+## see [5] https://en.wikibooks.org/wiki/LaTeX/Customizing_Page_Headers_and_Footers
+
+text: init
+
+# DOCUMENT STYLE
+## Global document visual settings; page dimensions, margins etc.
+
+# documentclass: general document class (see [2])
+## accepts: e.g. article, report, book, memoir, letter (...)
+documentclass: report
+
+# documentoptions: general document options (see [2])
+## accepts: e.g. oneside, twoside, twocolumn, titlepage, notitlepage (...)
+## may be repetated multiple times
+documentoptions: oneside
+documentoptions: notitlepage
+
+# pagestyle: see [5]
+## accepts: e.g. plain, empty, or heading
+pagestyle: plain
+
+# papersize: standardized paper document dimensions (see [2])
+## accepts: e.g. a4, a5, letter (...)
+papersize: a4
+
+# margin-<direction>: distance of the content from edge of the paper
+## accepts: <x>cm
+margin-left: 1.5cm
+margin-right: 1cm
+margin-top: 1cm
+margin-bottom: 2cm
+
+
+
+# FONT STYLES
+
+# fontfamily: font package
+## accepts: package name string
+## to find the package name, see [3] and on the font detail search for line like '\usepackage{lmodern}'
+## you might also need to install this package to MiKTeX
+fontfamily: lmodern
+
+# fontfamilyoptions: see [1]
+
+# mainfont, sansfont, monofont, mathfont, CJKmainfont: see [1]
+
+# mainfontoptions, sansfontoptions, monofontoptions, mathfontoptions, CJKoptions: see [1]
+
+# fontenc: see [1]
+
+# microtypeoptions: see [1]
+
+# fontsize: base font size
+## accepts: e.g. 10pt, 11pt, 12pt
+fontsize: 11pt 
+
+
+
+# LINKS
+
+# colorlinks: turn on colouring the links
+## accepts: boolean
+colorlinks: true
+
+# <x>color: color of different types of links
+## accepts: see [4]
+linkcolor: Blue
+citecolor: Blue
+urlcolor: Blue
+toccolor: Black
+
+# links-as-notes: causes links to be printed as footnotes
+## accepts: true or false
+links-as-notes: true
+
+
+
+# PARAGRAPHS
+
+# linestetch: text vertical spacing
+## accepts: decimal value
+linestretch: 1.25
+
+# indent: differnece between anglo-american and continental norm of paragraph division; true value sets first line of the paragraph indented, false creates bigger spaces between paragraphs
+## accepts: true or false
+indent: false
+
+# subparagraph: see [1]
+subparagraph: yes
+
+
+
+# BIBLIOGRAPHY
+
+# biblio-style: see [1]
+
+# csl: load the citation norm template
+## accepts: filepath relative to chapters subfolder (!)
+csl: C:/wamp/www/src/_projects/MarkDownThesisFW/_script/resources/templates/plain/citation_style.csl
+
+
+
+# OTHER ADDITIONS
+
+# <x>-includes: you might want to append some LaTeX lwines to the template without rewriting it. Theese variables are outputed at certain parts of the template
+## accepts: LaTeX statements
+
+### append subtitle on the front page
+header-includes: |
+    \providecommand{\subtitle}[1]{%
+    \usepackage{titling}
+    \posttitle{%
+    \par\large#1\end{center}}
+    }
+before-includes: |
+after-includes: |
+
+
+
+# (add any other style-related variables you need for custom template)
+...

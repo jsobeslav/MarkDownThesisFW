@@ -19,7 +19,7 @@ Nulla lobortis sem non varius pretium. Etiam luctus urna eget lorem posuere, auc
 
 This is, how you input an image. The filepath is relative to this MD file and it should also be notet, that the image does not always stay on the declared position, but instead LaTeX moves it to separate page, if necessary due to its size.
 
-![A magnificent animal](../images/reindeer.jpg)
+**![A magnificent animal](../images/reindeer.jpg)**
 
 Donec euismod massa a magna blandit convallis. Ut vulputate risus augue, ut dictum diam feugiat non. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
 

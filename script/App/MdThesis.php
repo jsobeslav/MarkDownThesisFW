@@ -38,22 +38,27 @@ class MdThesis
 		// Pass all the loaded files to pandoc, alongside with additional parameters.
 		$command = new Command();
 
-		// Append metadata.
-		$command->parameter($document->getContentMetadata());
-		$command->parameter($template->getStyleMetadata());
+		// Include packages.
+		$command->parameter('-V header-includes="\usepackage{pdfpages}"');   // Include PDFs.
+		$command->parameter('-V header-includes="\usepackage{odsfile}"');    // Include ODS tables.
+		$command->parameter('--filter pandoc-citeproc');                     // Use citations.
 
-		foreach($document->getChapters() as $chapter){
-			$command->parameter($chapter->getFilename());
+		// Append metadata.
+		$command->parameter($document->getContentMetadata());    // Content metadata.
+		$command->parameter($template->getStyleMetadata());      // Style metadata.
+
+		foreach ($document->getChapters() as $chapter) {
+			$command->parameter((string) $space);            // Space file.
+			$command->parameter($chapter->getFilename());    // Chapter.
 		}
 
-		//$command->parameter('--filter pandoc-citeproc'); @todo fix citation standard link
-		$command->parameter('--template='.$template->compiledDocumentTemplate);
-		$command->parameter('-o output.'.$outputFormat);
-		$command->parameter('-s');
+		$command->parameter('--template=' . $template->compiledDocumentTemplate);  // Document template.
+		$command->parameter('--from=markdown+escaped_line_breaks');                // Input format.
+		$command->parameter('-o output.' . $outputFormat);                         // Output format.
+		$command->parameter('-s');                                                 // Standalone file.
 
 		$pandoc = new Pandoc();
 		$pandoc->run($command);
-
 		// @TODO Remove temp files
 	}
 }

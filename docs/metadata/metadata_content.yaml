@@ -85,7 +85,7 @@ biblatex: true
 
 # bibliography: load the BiBLaTeX file
 ## accepts: filepath relative to chapters subfolder (!)
-bibliography: ../metadata/bibliography.bib
+bibliography: C:/wamp/www/src/_projects/MarkDownThesisFW/docs/metadata/bibliography.bib
 
 # biblio-title: Heading of the blibliography block
 ## accepts: string

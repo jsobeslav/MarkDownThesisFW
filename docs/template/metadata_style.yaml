@@ -31,10 +31,10 @@ papersize: a4
 
 # margin-<direction>: distance of the content from edge of the paper
 ## accepts: <x>cm
-margin-left: 1.5cm
-margin-right: 1cm
-margin-top: 1cm
-margin-bottom: 2cm
+margin-left: 3.5cm
+margin-right: 2cm
+margin-top: 2cm
+margin-bottom: 2.5cm
 
 
 
@@ -48,7 +48,7 @@ fontfamily: lmodern
 
 # fontfamilyoptions: see [1]
 
-# mainfont, sansfont, monofont, mathfont, CJKmainfont: see [1]
+# mainfont, sansfont, monowfont, mathfont, CJKmainfont: see [1]
 
 # mainfontoptions, sansfontoptions, monofontoptions, mathfontoptions, CJKoptions: see [1]
 
@@ -58,7 +58,7 @@ fontfamily: lmodern
 
 # fontsize: base font size
 ## accepts: e.g. 10pt, 11pt, 12pt
-fontsize: 11pt 
+fontsize: 12pt
 
 
 
@@ -85,7 +85,7 @@ links-as-notes: true
 
 # linestetch: text vertical spacing
 ## accepts: decimal value
-linestretch: 1.25
+linestretch: 1.3
 
 # indent: differnece between anglo-american and continental norm of paragraph division; true value sets first line of the paragraph indented, false creates bigger spaces between paragraphs
 ## accepts: true or false
@@ -101,8 +101,8 @@ subparagraph: yes
 # biblio-style: see [1]
 
 # csl: load the citation norm template
-## accepts: filepath relative to chapters subfolder (!)
-csl: ./citation_style.csl
+## accepts: absolute filepath  (!)
+csl: C:/mdtheis/docs/template/citation_style.csl
 
 
 
@@ -118,6 +118,7 @@ header-includes: |
     \posttitle{%
     \par\large#1\end{center}}
     }
+
 before-includes: |
 after-includes: |
 

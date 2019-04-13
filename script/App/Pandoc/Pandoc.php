@@ -20,6 +20,7 @@ class Pandoc
 	public function run(Command $command): string
 	{
 		$process = new Process($command);
+		$process->setTimeout(360);
 		$process->run();
 
 		if (! $process->isSuccessful()) {

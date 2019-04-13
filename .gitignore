@@ -1,7 +1,6 @@
-/_script/_temp/*
-/_script/temp/*
-/_script/vendor/*
-/_dev
-output.pdf
 .idea
-MarkDownThesisFW.html
+/_dev
+/script/vendor/*
+/script/_temp/*
+/script/temp/*
+output.pdf

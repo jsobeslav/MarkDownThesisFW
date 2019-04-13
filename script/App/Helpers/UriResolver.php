@@ -97,7 +97,7 @@ class UriResolver
 	public static function tempSpaceFile(): string
 	{
 		return sprintf(
-			'%s/space_file.md',
+			'%s/spf.md',
 			Config::tempDirectory()
 		);
 	}

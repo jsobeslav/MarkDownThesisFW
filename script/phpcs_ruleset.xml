@@ -26,6 +26,9 @@
 
 	<!-- docblocks -->
 	<rule ref="Squiz.Commenting.BlockComment"/>
+	<rule ref="Squiz.Commenting.BlockComment.WrongStart">
+		<severity>0</severity>
+	</rule>
 
 	<rule ref="Squiz.Commenting.VariableComment"/>
 
@@ -47,6 +50,9 @@
 		<severity>0</severity>
 	</rule>
 	<rule ref="Squiz.Commenting.InlineComment"/>
+	<rule ref="Squiz.Commenting.InlineComment.DocBlock">
+		<severity>0</severity>
+	</rule>
 
 	<!-- other possible errors -->
 	<rule ref="Generic.PHP.ForbiddenFunctions"/>
