@@ -35,3 +35,18 @@ if (! function_exists('normalized_path')) {
 		return $path;
 	}
 }
+
+if (! function_exists('md_method_regex')) {
+	/**
+	 * Shorthand for constructing a regex that identifies a custom method in MarkDown files.
+	 *
+	 * @return string
+	 */
+	function md_method_regex(): string
+	{
+		$methodName = '\?\[([\w-]+)\]';           // ?[method-name] - mandatory
+		$parameter  = '(?:\(([\w:_\.\\\\]+)\))?'; // (whatever/parameter:you_want) - optional
+
+		return '/' . $methodName . $parameter . $parameter . $parameter . '/';
+	}
+}

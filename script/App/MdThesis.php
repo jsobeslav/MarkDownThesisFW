@@ -40,7 +40,7 @@ class MdThesis
 
 		// Include packages.
 		$command->parameter('-V header-includes="\usepackage{pdfpages}"'); // Include PDFs.
-		//$command->parameter('-V header-includes="\usepackage{odsfile}"'); // Include ODS tables.
+		//$command->parameter('-V header-includes="\usepackage{odsfile}"'); // @TODO Include ODS tables.
 		$command->parameter('--filter pandoc-citeproc'); // Use citations.
 
 		// Append metadata.
@@ -63,6 +63,7 @@ class MdThesis
 
 		$pandoc = new Pandoc();
 		$pandoc->run($command);
+
 		// @TODO Remove _temp files
 	}
 }

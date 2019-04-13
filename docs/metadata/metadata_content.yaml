@@ -9,13 +9,11 @@
 
 # title, subtitle, author, institute, date: self-explanatory
 ## accepts: string
-title: MarkDown Thesis FrameWork 
+title: MarkDown Thesis Framework
 subtitle: An example meta declaration
 author: Jan Sobeslav
 institute: Freelance developer / CULS / Adastra.one
 date: February 2018
-
-logo: ../images/logo.jpg
 
 
 
@@ -84,8 +82,8 @@ lof-title: List of figures
 biblatex: true
 
 # bibliography: load the BiBLaTeX file
-## accepts: filepath relative to chapters subfolder (!)
-bibliography: C:/wamp/www/src/_projects/MarkDownThesisFW/docs/metadata/bibliography.bib
+## accepts: absolute filepath
+bibliography: C:/mdthesis/docs/metadata/bibliography.bib
 
 # biblio-title: Heading of the blibliography block
 ## accepts: string

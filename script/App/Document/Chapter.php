@@ -75,7 +75,7 @@ class Chapter
 		fclose($file);
 
 		// Select methods
-		$regex = '/!\[[\w-\/]+\](?:\(\w+\))*/';
+		$regex = md_method_regex();
 		preg_match_all($regex, $fileContent, $matches);
 		/**
 		 * @var array $matches
@@ -83,7 +83,7 @@ class Chapter
 		 * <pre>
 		 * [
 		 *     0 => [
-		 *                0 => `![vertical-space](20mm)`
+		 *                0 => `?[vertical-space](20mm)`
 		 *          ]
 		 * ]
 		 * </pre>
@@ -91,17 +91,16 @@ class Chapter
 
 		// Foreach found method, process it.
 		foreach ($matches[0] ?? [] as $index => $match) {
-			/** @var string $match E.g.: `![vertical-space](20mm)`. */
+			/** @var string $match E.g.: `?[vertical-space](20mm)`. */
 
 			// Pluck method and parameters.
-			$detailedRegex = '/!\[([\w-\/]+)\](?:\((\w+)\))?(?:\((\w+)\))?(?:\((\w+)\))?/';
-			preg_match($detailedRegex, $match, $parts);
+			preg_match($regex, $match, $parts);
 			/**
 			 * @var array $parts
 			 *
 			 * <pre>
 			 * [
-			 *    0 => ![vertical-space](20mm)
+			 *    0 => ?[vertical-space](20mm)
 			 *    1 => vertical-space
 			 *    2 => 20mm
 			 * ]
@@ -205,14 +204,14 @@ class Chapter
 				return sprintf(
 					'\includepdf[pages=%s]{%s}',
 					$parameters[1] ?? '-',
-					$parameters[0]
+					str_replace( '\\', '/', $parameters[0])
 				);
 
 			case 'include-table':
 				return sprintf(
 					'\includespread[template=%s,file=%s,sheet=%s]',
 					$parameters[2] ?? 'booktabs',
-					$parameters[0],
+					str_replace( '\\', '/', $parameters[0]),
 					$parameters[1]
 				);
 

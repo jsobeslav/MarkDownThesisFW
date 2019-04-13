@@ -101,24 +101,18 @@ subparagraph: yes
 # biblio-style: see [1]
 
 # csl: load the citation norm template
-## accepts: absolute filepath  (!)
+## accepts: absolute filepath (!)
 csl: C:/mdthesis/docs/template/citation_style.csl
 
 
 
 # OTHER ADDITIONS
 
-# <x>-includes: you might want to append some LaTeX lwines to the template without rewriting it. Theese variables are outputed at certain parts of the template
+# <x>-includes: you might want to append some LaTeX lwines to the template without rewriting it.
+# These variables are outputed at certain parts of the template
 ## accepts: LaTeX statements
 
-### append subtitle on the front page
 header-includes: |
-    \providecommand{\subtitle}[1]{%
-    \usepackage{titling}
-    \posttitle{%
-    \par\large#1\end{center}}
-    }
-
 before-includes: |
 after-includes: |
 
