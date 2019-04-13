@@ -67,7 +67,7 @@ class Document
 	 */
 	public function getDirectory(): string
 	{
-		return $this->directory;
+		return normalized_path($this->directory);
 	}
 
 	/**

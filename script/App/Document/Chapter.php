@@ -13,7 +13,7 @@ class Chapter
 	protected $filename;
 
 	/** @var string $compiledFile */
-	protected $compiledFile; // @todo Is it useless?
+	protected $compiledFile;
 
 	/** @var Document $document */
 	protected $document;
@@ -295,7 +295,7 @@ class Chapter
 	 */
 	public function getFilename(): string
 	{
-		return $this->filename;
+		return normalized_path($this->filename);
 	}
 
 	/**
@@ -303,6 +303,6 @@ class Chapter
 	 */
 	public function getCompiledFile(): string
 	{
-		return $this->compiledFile;
+		return normalized_path($this->compiledFile);
 	}
 }

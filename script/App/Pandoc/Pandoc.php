@@ -21,7 +21,7 @@ class Pandoc
 	{
 		$process = new Process($command);
 		$process->setTimeout(360);
-		$process->run();
+		$process->mustRun();
 
 		if (! $process->isSuccessful()) {
 			throw new ProcessFailedException($process);

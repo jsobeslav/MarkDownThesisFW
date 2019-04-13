@@ -17,9 +17,11 @@ class UriResolver
 	 */
 	public static function citationStyle(string $templateDirectory): string
 	{
-		return sprintf(
-			'%s/citation_style.csl',
-			$templateDirectory
+		return normalized_path(
+			sprintf(
+				'%s/citation_style.csl',
+				$templateDirectory
+			)
 		);
 	}
 
@@ -30,9 +32,11 @@ class UriResolver
 	 */
 	public static function epubStyle(string $templateDirectory): string
 	{
-		return sprintf(
-			'%s/epub_style.css',
-			$templateDirectory
+		return normalized_path(
+			sprintf(
+				'%s/epub_style.css',
+				$templateDirectory
+			)
 		);
 	}
 
@@ -43,9 +47,11 @@ class UriResolver
 	 */
 	public static function styleMetadata(string $templateDirectory): string
 	{
-		return sprintf(
-			'%s/metadata_style.yaml',
-			$templateDirectory
+		return normalized_path(
+			sprintf(
+				'%s/metadata_style.yaml',
+				$templateDirectory
+			)
 		);
 	}
 
@@ -58,9 +64,11 @@ class UriResolver
 	 */
 	public static function documentTemplate(string $templateDirectory): string
 	{
-		return sprintf(
-			'%s/template_document.tex',
-			$templateDirectory
+		return normalized_path(
+			sprintf(
+				'%s/template_document.tex',
+				$templateDirectory
+			)
 		);
 	}
 
@@ -73,9 +81,11 @@ class UriResolver
 	 */
 	public static function chapterTemplate(string $templateDirectory): string
 	{
-		return sprintf(
-			'%s/template_chapter.tex',
-			$templateDirectory
+		return normalized_path(
+			sprintf(
+				'%s/template_chapter.tex',
+				$templateDirectory
+			)
 		);
 	}
 
@@ -84,9 +94,11 @@ class UriResolver
 	 */
 	public static function tempSpaceFile(): string
 	{
-		return sprintf(
-			'%s/spf.md',
-			Config::tempDirectory()
+		return normalized_path(
+			sprintf(
+				'%s/spf.md',
+				Config::tempDirectory()
+			)
 		);
 	}
 
@@ -97,11 +109,13 @@ class UriResolver
 	 */
 	public static function tempChapter(string $prefix = ''): string
 	{
-		return sprintf(
-			'%s/%s%s.md',
-			Config::tempDirectory(),
-			$prefix,
-			static::counter()
+		return normalized_path(
+			sprintf(
+				'%s/%s%s.md',
+				Config::tempDirectory(),
+				$prefix,
+				static::counter()
+			)
 		);
 	}
 
@@ -112,9 +126,11 @@ class UriResolver
 	 */
 	public static function contentMetadata(string $documentDirectory): string
 	{
-		return sprintf(
-			'%s/metadata/metadata_content.yaml',
-			$documentDirectory
+		return normalized_path(
+			sprintf(
+				'%s/metadata/metadata_content.yaml',
+				$documentDirectory
+			)
 		);
 	}
 
@@ -125,6 +141,11 @@ class UriResolver
 	 */
 	public static function chaptersDirectory(string $documentDirectory): string
 	{
-		return sprintf('%s/content/chapters', $documentDirectory);
+		return normalized_path(
+			sprintf(
+				'%s/content/chapters',
+				$documentDirectory
+			)
+		);
 	}
 }

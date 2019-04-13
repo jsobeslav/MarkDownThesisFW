@@ -17,3 +17,21 @@ if (! function_exists('str_replace_first')) {
 		return preg_replace($search, $replace, $subject, 1);
 	}
 }
+
+if (! function_exists('normalized_path')) {
+	/**
+	 * Normalizes filepaths to uniform, predictable format.
+	 *
+	 * @param string $path
+	 *
+	 * @return string
+	 */
+	function normalized_path(string $path): string
+	{
+		$path = str_replace('/', '\\', $path);
+		$path = str_replace('\\\\', '\\', $path);
+		$path = str_replace('\\.\\', '\\', $path);
+
+		return $path;
+	}
+}

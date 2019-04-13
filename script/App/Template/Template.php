@@ -157,7 +157,7 @@ class Template
 	 */
 	public function getDirectory(): string
 	{
-		return $this->directory;
+		return normalized_path($this->directory);
 	}
 
 	/**
@@ -173,7 +173,7 @@ class Template
 	 */
 	public function getCompiledDocumentTemplate(): string
 	{
-		return $this->compiledDocumentTemplate;
+		return normalized_path($this->compiledDocumentTemplate);
 	}
 
 	/**
@@ -181,7 +181,7 @@ class Template
 	 */
 	public function getCompiledChapterTemplate(): string
 	{
-		return $this->compiledChapterTemplate;
+		return normalized_path($this->compiledChapterTemplate);
 	}
 
 }
