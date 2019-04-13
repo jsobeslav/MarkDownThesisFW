@@ -8,14 +8,14 @@ use App\Template\Template;
 class Document
 {
 
+	/** @var array $acceptedFilenames */
+	protected $acceptedFilenames = ['md'];
+
 	/** @var string $directory Full path to document root directory. */
 	protected $directory;
 
 	/** @var Template $template */
 	protected $template;
-
-	/** @var array $acceptedFilenames */
-	protected $acceptedFilenames = ['md'];
 
 	/** @var array $chapters */
 	protected $chapters;
@@ -55,6 +55,14 @@ class Document
 	}
 
 	/**
+	 * @return array
+	 */
+	public function getAcceptedFilenames(): array
+	{
+		return $this->acceptedFilenames;
+	}
+
+	/**
 	 * @return string
 	 */
 	public function getDirectory(): string
@@ -84,14 +92,6 @@ class Document
 	public function getTemplate(): Template
 	{
 		return $this->template;
-	}
-
-	/**
-	 * @return array
-	 */
-	public function getAcceptedFilenames(): array
-	{
-		return $this->acceptedFilenames;
 	}
 
 	/**

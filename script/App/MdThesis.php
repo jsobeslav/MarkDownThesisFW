@@ -49,7 +49,7 @@ class MdThesis
 
 		foreach ($document->getChapters() as $chapter) {
 			$command->parameter((string) $space);            // Space file.
-			$command->parameter($chapter->getFilename());    // Chapter.
+			$command->parameter($chapter->getCompiledFile());    // Chapter.
 		}
 
 		$command->parameter('--template=' . $template->getCompiledDocumentTemplate());    // Document template.

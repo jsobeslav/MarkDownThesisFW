@@ -12,8 +12,8 @@ class Chapter
 	/** @var string $filename */
 	protected $filename;
 
-	/** @var string $compiledFilename */
-	protected $compiledFilename; // @todo Is it useless?
+	/** @var string $compiledFile */
+	protected $compiledFile; // @todo Is it useless?
 
 	/** @var Document $document */
 	protected $document;
@@ -43,7 +43,10 @@ class Chapter
 	 */
 	public function precompile(): void
 	{
+		$this->compiledFile = $this->filename;
+
 		$this->copy();
+		$this->applyMethods();
 		$this->replaceVariables();
 		$this->applyTemplate();
 	}
@@ -55,10 +58,97 @@ class Chapter
 	{
 		// Copy the file to temp.
 		$tempName = UriResolver::tempChapter('cha');
-		copy($this->filename, $tempName);
+		copy($this->compiledFile, $tempName);
 
 		// New filename.
-		$this->filename = $tempName;
+		$this->compiledFile = $tempName;
+	}
+
+	/**
+	 * Apply custom methods.
+	 */
+	private function applyMethods(): void
+	{
+		// Load file content.
+		$file  = fopen($this->compiledFile, "r");
+		$fileContent = fread($file, filesize($this->compiledFile));
+		fclose($file);
+
+		// Select methods
+		$regex = '/!\[([\w-]+)\](?:\((\w+)\))*/';
+		preg_match_all($regex, $fileContent, $matches);
+		/**
+		 * @var array $matches
+		 *
+		 * <pre>
+		 * [
+		 *     0 => [
+		 *				0 => `![vertical-space](20mm)`
+		 *          ]
+		 *     1 => [(...)]
+		 *     2 => [(...)]
+		 * ]
+		 * </pre>
+		 */
+
+		// Foreach found method, process it.
+		foreach ($matches[0] ?? [] as $index => $match) {
+			/** @var string $match E.g.: `![vertical-space](20mm)`. */
+
+			// Pluck method and parameters.
+			preg_match($regex, $match, $parts);
+			/**
+			 * @var array $parts
+			 *
+			 * <pre>
+			 * [
+			 *    0 => ![vertical-space](20mm)
+			 *    1 => vertical-space
+			 *    2 => 20mm
+			 * ]
+			 * </pre>
+			 */
+
+			// If there is suspiciously little parameters, skip it.
+			if (count($parts) < 2) {
+				continue;
+			}
+
+			// Prepare method name and parameters.
+			$parameters = $parts;
+			unset($parameters[0]);
+			unset($parameters[1]);
+
+			// Run the filter.
+			$return = $this->applyMethod($parts[1], $parameters);
+
+			// If signature did not match any method, skip it.
+			if(empty($return)){
+				continue;
+			}
+
+			// Else replace the match in current file.
+			$fileContent = str_replace_first($match, $return, $fileContent);
+		}
+
+		// Save file content.
+		$file  = fopen($this->compiledFile, "w");
+		fwrite($file, $fileContent);
+		fclose($file);
+	}
+
+	/**
+	 * @param string $methodName
+	 * @param array  $parameters
+	 *
+	 * @return string
+	 */
+	private function applyMethod(string $methodName, array $parameters): string
+	{
+		switch ($methodName) {
+			default:
+				return '<a method!>';
+		}
 	}
 
 	/**
@@ -74,8 +164,8 @@ class Chapter
 
 		$command->parameter($this->document->getContentMetadata());
 		$command->parameter($this->document->getTemplate()->getStyleMetadata());
-		$command->parameter($this->getFilename());
-		$command->parameter('--template=' . $this->getFilename());
+		$command->parameter($this->getCompiledFile());
+		$command->parameter('--template=' . $this->getCompiledFile());
 		$command->parameter(
 			sprintf(
 				'-o %s',                                   // Output format.
@@ -88,7 +178,7 @@ class Chapter
 		$pandoc->run($command);
 
 		// New filename.
-		$this->filename = $tempName;
+		$this->compiledFile = $tempName;
 	}
 
 	/**
@@ -104,7 +194,7 @@ class Chapter
 
 		$command->parameter($this->document->getContentMetadata());
 		$command->parameter($this->document->getTemplate()->getStyleMetadata());
-		$command->parameter($this->getFilename());
+		$command->parameter($this->getCompiledFile());
 		$command->parameter('--template=' . $this->chapterTemplate);
 		$command->parameter(
 			sprintf(
@@ -118,9 +208,8 @@ class Chapter
 		$pandoc->run($command);
 
 		// New filename.
-		$this->filename = $tempName;
+		$this->compiledFile = $tempName;
 	}
-
 
 	/**
 	 * @return Document
@@ -136,5 +225,13 @@ class Chapter
 	public function getFilename(): string
 	{
 		return $this->filename;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCompiledFile(): string
+	{
+		return $this->compiledFile;
 	}
 }
