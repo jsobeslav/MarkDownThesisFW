@@ -70,12 +70,12 @@ class Chapter
 	private function applyMethods(): void
 	{
 		// Load file content.
-		$file  = fopen($this->compiledFile, "r");
+		$file        = fopen($this->compiledFile, "r");
 		$fileContent = fread($file, filesize($this->compiledFile));
 		fclose($file);
 
 		// Select methods
-		$regex = '/!\[([\w-]+)\](?:\((\w+)\))*/';
+		$regex = '/!\[[\w-]+\](?:\(\w+\))*/';
 		preg_match_all($regex, $fileContent, $matches);
 		/**
 		 * @var array $matches
@@ -83,10 +83,8 @@ class Chapter
 		 * <pre>
 		 * [
 		 *     0 => [
-		 *				0 => `![vertical-space](20mm)`
+		 *                0 => `![vertical-space](20mm)`
 		 *          ]
-		 *     1 => [(...)]
-		 *     2 => [(...)]
 		 * ]
 		 * </pre>
 		 */
@@ -96,7 +94,8 @@ class Chapter
 			/** @var string $match E.g.: `![vertical-space](20mm)`. */
 
 			// Pluck method and parameters.
-			preg_match($regex, $match, $parts);
+			$detailedRegex = '/!\[([\w-]+)\](?:\((\w+)\))?(?:\((\w+)\))?(?:\((\w+)\))?/';
+			preg_match($detailedRegex, $match, $parts);
 			/**
 			 * @var array $parts
 			 *
@@ -123,7 +122,7 @@ class Chapter
 			$return = $this->applyMethod($parts[1], $parameters);
 
 			// If signature did not match any method, skip it.
-			if(empty($return)){
+			if (empty($return)) {
 				continue;
 			}
 
@@ -132,7 +131,7 @@ class Chapter
 		}
 
 		// Save file content.
-		$file  = fopen($this->compiledFile, "w");
+		$file = fopen($this->compiledFile, "w");
 		fwrite($file, $fileContent);
 		fclose($file);
 	}

@@ -4,7 +4,7 @@ test: yay
 
 method result (vspace fill):
 
-![vertical-space]
+![vertical-space](20mm)(30mm)
 
 local variable: $test$
 
