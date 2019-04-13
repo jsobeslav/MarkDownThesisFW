@@ -3,24 +3,12 @@
 namespace App\Helpers;
 
 use App\Config;
+use App\Helpers\Traits\HaveCounter;
 
 class UriResolver
 {
 
-	/**
-	 * @param string $rootDirectory
-	 * @param string $templateName
-	 *
-	 * @return string
-	 */
-	public static function templateDirectory(string $rootDirectory, string $templateName): string
-	{
-		return sprintf(
-			'%s/templates/%s',
-			$rootDirectory,
-			$templateName
-		);
-	}
+	use HaveCounter;
 
 	/**
 	 * @param string $templateDirectory
@@ -102,6 +90,26 @@ class UriResolver
 		);
 	}
 
+	/**
+	 * @param string $prefix
+	 *
+	 * @return string
+	 */
+	public static function tempChapter(string $prefix = ''): string
+	{
+		return sprintf(
+			'%s/%s%s.md',
+			Config::tempDirectory(),
+			$prefix,
+			static::counter()
+		);
+	}
+
+	/**
+	 * @param string $documentDirectory
+	 *
+	 * @return string
+	 */
 	public static function contentMetadata(string $documentDirectory): string
 	{
 		return sprintf(
@@ -117,6 +125,6 @@ class UriResolver
 	 */
 	public static function chaptersDirectory(string $documentDirectory): string
 	{
-		return sprintf('%s/chapters', $documentDirectory);
+		return sprintf('%s/content/chapters', $documentDirectory);
 	}
 }

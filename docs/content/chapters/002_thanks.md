@@ -1,2 +1,0 @@
-# Thanks
-Nunc est lacus, rutrum quis sodales ut, scelerisque ut nibh. Fusce a risus vel nisi condimentum euismod. Curabitur porta, dolor sit amet congue gravida, est elit ultricies odio, sit amet gravida sem ex sit amet arcu. 

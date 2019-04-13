@@ -102,7 +102,7 @@ subparagraph: yes
 
 # csl: load the citation norm template
 ## accepts: absolute filepath  (!)
-csl: C:/mdtheis/docs/template/citation_style.csl
+csl: C:/mdthesis/docs/template/citation_style.csl
 
 
 

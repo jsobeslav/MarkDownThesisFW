@@ -7,7 +7,7 @@ use App\Helpers\UriResolver;
 class SpaceFile
 {
 
-	/** @var string $filename Full path to temp file. */
+	/** @var string $filename Full path to _temp file. */
 	public $filename;
 
 	/**

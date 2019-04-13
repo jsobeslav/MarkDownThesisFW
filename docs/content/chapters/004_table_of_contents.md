@@ -1,5 +1,0 @@
-\tableofcontents
-
-\listoftables
-
-\listoffigures

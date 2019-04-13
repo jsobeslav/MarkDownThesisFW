@@ -13,7 +13,7 @@ $templateName = $argv[3] ?? 'default';
 
 // config
 \App\Config::scriptRoot(__DIR__);
-\App\Config::tempDirectory(__DIR__ . '/temp');
+\App\Config::tempDirectory(__DIR__ . '/_temp');
 \App\Config::documentRoot($documentRoot);
 
 // Run the processing

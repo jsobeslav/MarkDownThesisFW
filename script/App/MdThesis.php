@@ -39,9 +39,9 @@ class MdThesis
 		$command = new Command();
 
 		// Include packages.
-		$command->parameter('-V header-includes="\usepackage{pdfpages}"');   // Include PDFs.
-		$command->parameter('-V header-includes="\usepackage{odsfile}"');    // Include ODS tables.
-		$command->parameter('--filter pandoc-citeproc');                     // Use citations.
+		$command->parameter('-V header-includes="\usepackage{pdfpages}"'); // Include PDFs.
+		//$command->parameter('-V header-includes="\usepackage{odsfile}"'); // Include ODS tables.
+		$command->parameter('--filter pandoc-citeproc'); // Use citations.
 
 		// Append metadata.
 		$command->parameter($document->getContentMetadata());    // Content metadata.
@@ -52,13 +52,17 @@ class MdThesis
 			$command->parameter($chapter->getFilename());    // Chapter.
 		}
 
-		$command->parameter('--template=' . $template->compiledDocumentTemplate);  // Document template.
-		$command->parameter('--from=markdown+escaped_line_breaks');                // Input format.
-		$command->parameter('-o output.' . $outputFormat);                         // Output format.
-		$command->parameter('-s');                                                 // Standalone file.
+		$command->parameter('--template=' . $template->getCompiledDocumentTemplate());    // Document template.
+		$command->parameter('--from=markdown+escaped_line_breaks');                  // Input format.
+		$command->parameter(sprintf('-o %s/%s.%s',                                   // Output format.
+				$document->getDirectoryName(),
+				$document->getDirectoryName(),
+				$outputFormat)
+		);
+		$command->parameter('-s'); // Standalone file.
 
 		$pandoc = new Pandoc();
-		$pandoc->run($command);
-		// @TODO Remove temp files
+		//$pandoc->run($command);
+		// @TODO Remove _temp files
 	}
 }

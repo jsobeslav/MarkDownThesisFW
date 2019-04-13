@@ -1,5 +1,0 @@
-# Abstract
-$abstract$
-
-# Keywords
-$keywords$

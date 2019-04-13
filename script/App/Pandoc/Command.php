@@ -2,6 +2,8 @@
 
 namespace App\Pandoc;
 
+use App\Helpers\UriResolver;
+
 class Command
 {
 
@@ -41,6 +43,14 @@ class Command
 	}
 
 	/**
+	 * Shorthand for inserting space file
+	 */
+	public function spaceFile(): void
+	{
+		$this->parameter(UriResolver::tempSpaceFile());
+	}
+
+	/**
 	 * Serialize
 	 *
 	 * @return string
@@ -55,7 +65,7 @@ class Command
 		// Pandoc file processing request.
 		$parts = array_merge(
 			[
-				self::COMMAND
+				self::COMMAND,
 			],
 			$this->parameters
 		);

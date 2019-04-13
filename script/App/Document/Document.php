@@ -9,15 +9,16 @@ class Document
 {
 
 	/** @var string $directory Full path to document root directory. */
-	public $directory;
+	protected $directory;
 
 	/** @var Template $template */
-	public $template;
+	protected $template;
+
+	/** @var array $acceptedFilenames */
+	protected $acceptedFilenames = ['md'];
 
 	/** @var array $chapters */
-	public $chapters;
-
-	private $acceptedFilenames = ['md'];
+	protected $chapters;
 
 	/**
 	 * Document constructor.
@@ -27,8 +28,8 @@ class Document
 	 */
 	public function __construct(string $documentRoot, Template $template)
 	{
-		$this->directory     = $documentRoot;
-		$this->template = $template;
+		$this->directory = $documentRoot;
+		$this->template  = $template;
 
 		$this->precompile();
 	}
@@ -42,15 +43,55 @@ class Document
 	{
 		$chaptersDir = UriResolver::chaptersDirectory($this->directory);
 		foreach (scandir($chaptersDir) as $file) {
-			if (!in_array(pathinfo($file, PATHINFO_EXTENSION), $this->acceptedFilenames)) {
+			if (! in_array(pathinfo($file, PATHINFO_EXTENSION), $this->acceptedFilenames)) {
 				continue;
 			};
 
 			$this->chapters[] = new Chapter(
 				$chaptersDir . DIRECTORY_SEPARATOR . $file,
-				$this->template->compiledChapterTemplate
+				$this
 			);
 		}
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDirectory(): string
+	{
+		return $this->directory;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDirectoryName()
+	{
+		return basename($this->directory);
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getContentMetadata()
+	{
+		return UriResolver::contentMetadata($this->directory);
+	}
+
+	/**
+	 * @return Template
+	 */
+	public function getTemplate(): Template
+	{
+		return $this->template;
+	}
+
+	/**
+	 * @return array
+	 */
+	public function getAcceptedFilenames(): array
+	{
+		return $this->acceptedFilenames;
 	}
 
 	/**
@@ -61,10 +102,4 @@ class Document
 		return $this->chapters;
 	}
 
-	/**
-	 * @return string
-	 */
-	public function getContentMetadata(){
-		return UriResolver::contentMetadata($this->directory);
-	}
 }

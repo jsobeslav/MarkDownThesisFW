@@ -10,16 +10,16 @@ class Template
 {
 
 	/** @var string $name Template name. */
-	public $name;
+	protected $name;
 
 	/** @var string $directory Directory containing all necessary template files. */
-	public $directory;
+	protected $directory;
 
 	/** @var string $compiledDocumentTemplate Full path to compiled document subtemplate. */
-	public $compiledDocumentTemplate;
+	protected $compiledDocumentTemplate;
 
 	/** @var string $compiledChapterTemplate Full path to compiled chapter subtemplate. */
-	public $compiledChapterTemplate;
+	protected $compiledChapterTemplate;
 
 	/**
 	 * Template constructor.
@@ -35,7 +35,7 @@ class Template
 		$this->directory = $this->locateTemplate($templateName);
 
 		$this->compiledDocumentTemplate = UriResolver::documentTemplate($this->directory);
-		$this->compiledChapterTemplate = UriResolver::chapterTemplate($this->directory);
+		$this->compiledChapterTemplate  = UriResolver::chapterTemplate($this->directory);
 
 		return;
 		// @TODO Precompile the templates so that they can be written in more user friendly manner
@@ -55,14 +55,12 @@ class Template
 	protected function locateTemplate(string $templateName): string
 	{
 		$directories = [
-			Config::documentRoot(),                // Current working document templates.
-			Config::scriptRoot() . '/resources',    // Script default templates.
+			Config::documentRoot() . '/template/',                            // Current working document template.
+			Config::scriptRoot() . '/resources/templates/' . $templateName,   // Script default templates.
 		];
 
 		// Find first location that contains valid template going by the name.
-		foreach ($directories as $baseDirectory) {
-			$templateDirectory = UriResolver::templateDirectory($baseDirectory, $templateName);
-
+		foreach ($directories as $templateDirectory) {
 			if ($this->isValidTemplate($templateDirectory)) {
 				return $templateDirectory;
 			}
@@ -120,13 +118,13 @@ class Template
 	 * @param string $sourceFilename Location of original file. It remains untouched at the original location.
 	 * @param string $outputFilename Location of processed copy.
 	 *
-	 * @return string Full path to new temp file (same as $outputFilename)
+	 * @return string Full path to new _temp file (same as $outputFilename)
 	 *
 	 * @throws \App\Helpers\File\FileNotAccessibleException
 	 */
 	protected function precompileFile(string $sourceFilename, string $outputFilename): string
 	{
-		// Copy original file to temp.
+		// Copy original file to _temp.
 		$content = File::read($sourceFilename);
 
 		// Remove comments - anything beginning with % character (optionally preceded by white spaces) and ending with end of line.
@@ -149,7 +147,41 @@ class Template
 	/**
 	 * @return string
 	 */
-	public function getStyleMetadata(){
+	public function getName(): string
+	{
+		return $this->name;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDirectory(): string
+	{
+		return $this->directory;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getStyleMetadata()
+	{
 		return UriResolver::styleMetadata($this->directory);
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getCompiledDocumentTemplate(): string
+	{
+		return $this->compiledDocumentTemplate;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getCompiledChapterTemplate(): string
+	{
+		return $this->compiledChapterTemplate;
+	}
+
 }

@@ -29,22 +29,4 @@ class Pandoc
 
 		return $process->getOutput();
 	}
-
-	public function test(): string
-	{
-		$command = new Command();
-		$command->scriptFile(base_path() . static::SCRIPT_LAYER_PARSER);
-
-		// Get first suitable OAuth client and make Phantom auth request in its name.
-		$command->parameter(URL::to(static::AUTH_URL));
-		$oauthClient = Client::whereRevoked(false)->first();
-		$command->parameter((string) $oauthClient->id);
-		$command->parameter($oauthClient->secret);
-
-		$command->parameter($sourcePreviewUrl);
-		chmod(dirname($outputFullPath), 0777);
-		$command->parameter($outputFullPath);
-
-		return $this->runCommand($command);
-	}
 }
