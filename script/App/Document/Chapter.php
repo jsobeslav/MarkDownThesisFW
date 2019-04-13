@@ -75,7 +75,7 @@ class Chapter
 		fclose($file);
 
 		// Select methods
-		$regex = '/!\[[\w-]+\](?:\(\w+\))*/';
+		$regex = '/!\[[\w-\/]+\](?:\(\w+\))*/';
 		preg_match_all($regex, $fileContent, $matches);
 		/**
 		 * @var array $matches
@@ -94,7 +94,7 @@ class Chapter
 			/** @var string $match E.g.: `![vertical-space](20mm)`. */
 
 			// Pluck method and parameters.
-			$detailedRegex = '/!\[([\w-]+)\](?:\((\w+)\))?(?:\((\w+)\))?(?:\((\w+)\))?/';
+			$detailedRegex = '/!\[([\w-\/]+)\](?:\((\w+)\))?(?:\((\w+)\))?(?:\((\w+)\))?/';
 			preg_match($detailedRegex, $match, $parts);
 			/**
 			 * @var array $parts
@@ -117,6 +117,7 @@ class Chapter
 			$parameters = $parts;
 			unset($parameters[0]);
 			unset($parameters[1]);
+			$parameters = array_values($parameters);
 
 			// Run the filter.
 			$return = $this->applyMethod($parts[1], $parameters);
@@ -145,8 +146,79 @@ class Chapter
 	private function applyMethod(string $methodName, array $parameters): string
 	{
 		switch ($methodName) {
+			// Breaks.
+			case 'linebreak':
+				return '\newline';
+			case 'pagebreak':
+				return '\pagebreak';
+
+			// Spacing and aligning.
+			case 'vertical-space':
+				$space = $parameters[0] ?? null;
+				if ($space !== null) {
+					return sprintf('\vspace{%s}', $space);
+				}
+
+				return '\vspace*{\fill}';
+			case 'horizontal-space':
+				$space = $parameters[0] ?? null;
+				if ($space !== null) {
+					return sprintf('\hspace{%s}', $space);
+				}
+
+				return '\hspace*{\fill}';
+
+			case 'center':
+				return '\begin{center}';
+			case '/center':
+				return '\end{center}';
+
+			// Tables of content.
+			case 'toc':
+				return '\tableofcontents';
+			case 'lot':
+				return '\listoftables';
+			case 'lof':
+				return '\listoffigures';
+
+			case 'toc-entry':
+				return sprintf(
+					'\addcontentsline{toc}{%s}{%s}',
+					$parameters[0],
+					$parameters[1]
+				);
+
+			case 'lof-entry':
+				return sprintf(
+					'\addcontentsline{lof}{figure}{%s}',
+					$parameters[0]
+				);
+
+			case 'lot-entry':
+				return sprintf(
+					'\addcontentsline{lot}{table}{%s}',
+					$parameters[0]
+				);
+
+			// Includes.
+			case 'include-pdf':
+				return sprintf(
+					'\includepdf[pages=%s]{%s}',
+					$parameters[1] ?? '-',
+					$parameters[0]
+				);
+
+			case 'include-table':
+				return sprintf(
+					'\includespread[template=%s,file=%s,sheet=%s]',
+					$parameters[2] ?? 'booktabs',
+					$parameters[0],
+					$parameters[1]
+				);
+
+			// Default.
 			default:
-				return '<a method!>';
+				return '';
 		}
 	}
 

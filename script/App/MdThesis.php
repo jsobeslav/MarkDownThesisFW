@@ -62,7 +62,7 @@ class MdThesis
 		$command->parameter('-s'); // Standalone file.
 
 		$pandoc = new Pandoc();
-		//$pandoc->run($command);
+		$pandoc->run($command);
 		// @TODO Remove _temp files
 	}
 }
